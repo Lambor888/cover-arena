@@ -1,0 +1,32 @@
+{
+  "name": "cover-arena-prototype",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "test": "tsx --test src/world.test.ts src/ballistics.test.ts src/combat.test.ts src/terrain.test.ts src/fog.test.ts src/enemy.test.ts src/hazards.test.ts src/progression.test.ts server/room.test.ts src/shotgun.test.ts src/ultimates.test.ts src/pickups.test.ts server/netlify/handler.test.ts src/connection.test.ts src/networkMotion.test.ts",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "build:netlify": "node scripts/build-netlify.mjs",
+    "check:function": "node scripts/check-functions.mjs",
+    "start:server": "tsx server/start.ts",
+    "build:cloud": "node scripts/build-cloud.mjs"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^8.0.0",
+    "@netlify/blobs": "^10.5.0",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "@netlify/zip-it-and-ship-it": "^16.5.1",
+    "@types/node": "^24.0.0",
+    "@types/ws": "^8.18.2",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

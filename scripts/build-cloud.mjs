@@ -1,0 +1,14 @@
+import {spawnSync} from 'node:child_process';
+import {mkdir,writeFile} from 'node:fs/promises';
+const endpoint=process.env.VITE_GAME_WS_URL||'wss://34.130.69.170/ws';
+const url=new URL(endpoint);
+if(url.protocol!=='wss:'||url.username||url.password)throw Error('A public wss:// endpoint is required');
+process.env.VITE_GAME_TRANSPORT='websocket';
+process.env.VITE_GAME_WS_URL=endpoint;
+const check=spawnSync(process.execPath,['node_modules/typescript/bin/tsc','--noEmit'],{stdio:'inherit'});
+if(check.status!==0)process.exit(check.status??1);
+const {build}=await import('vite');
+await build({build:{outDir:'release-check/cloud-frontend'}});
+await mkdir('release-check/cloud-frontend',{recursive:true});
+await writeFile('release-check/cloud-frontend/_headers','/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n/index.html\n  Cache-Control: no-cache\n');
+console.log(`Frontend connects to ${endpoint}`);

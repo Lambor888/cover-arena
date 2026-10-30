@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Cover Arena — Tactical Duels</title></head>
+<body>
+  <canvas id="game" tabindex="0" aria-label="3D tactical arena. WASD to move, mouse to aim."></canvas>
+  <div class="game-hud">
+  <header><span class="eyebrow">COVER / ARENA</span><h1>Training</h1><p>Q Ultimate · F Reload</p></header>
+  <aside class="status">TRAINING <span id="fps">Loading</span></aside>
+  <section class="legend"><span class="eyebrow">FIELD NOTES</span><p>Bright: visible · Dim: remembered · Black: unexplored</p><small>Water extinguishes fire. Oil fuels it. Listen for hidden enemies.</small></section>
+  <nav class="weapons" aria-label="Select weapon"><div class="weapon-slots"><button data-weapon="pistol" aria-pressed="true"><kbd>1</kbd> Pistol</button><button data-weapon="sword" aria-pressed="false"><kbd>2</kbd> Sword</button><button data-weapon="rocket" aria-pressed="false"><kbd>3</kbd> Launcher</button><button data-weapon="grenade" aria-pressed="false"><kbd>4</kbd> Grenade</button><button data-weapon="shotgun" aria-pressed="false"><kbd>5</kbd> Shotgun</button></div><div id="weapon-status" aria-live="off"></div></nav>
+  <section id="enemy-hud" aria-label="Opponent health"></section>
+  <section id="combat-hud" aria-label="Your health and rage"></section>
+  <footer><div><kbd>WASD</kbd> Move</div><div><kbd>LMB</kbd> Attack</div><div><kbd>Q</kbd> Ultimate</div><div><kbd>F</kbd> Reload</div><button id="reset" type="button">Restart <kbd>R</kbd></button></footer>
+  </div>
+  <div id="round-result" role="status" hidden></div>
+  <div id="error" role="alert" hidden></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
